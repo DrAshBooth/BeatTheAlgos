@@ -1,91 +1,38 @@
 <!DOCTYPE html>
 
 <html>
-  <head>
-    <title>Beat The Algos</title>
-  </head>
-
-  <body>
-  	<canvas id="my_canvas"></canvas>
-	  <script>
-		  var canvas = null;
-		  var context = null;
-		  var framerate = 1000/30;
-		  frame = 0;
-		  var assets = ['/static/front00.png',
-		                '/static/front01.png',
-		                '/static/front02.png',
-		                '/static/front03.png',
-		                '/static/front04.png',
-		                '/static/front05.png',
-		                '/static/front06.png',
-		                '/static/front07.png',
-		                '/static/front08.png',
-		                '/static/front09.png',
-		                '/static/front10.png',
-		                '/static/front11.png',
-		                '/static/front12.png',
-		                '/static/front13.png',
-		                '/static/front14.png',
-		                '/static/front15.png',
-		                '/static/front16.png',
-		                '/static/front17.png',
-		                '/static/front18.png',
-		                '/static/front19.png',
-		                '/static/front20.png',
-		                '/static/front21.png',
-		                '/static/front22.png',
-		                '/static/front23.png',
-		                '/static/front24.png',
-		                '/static/front25.png',
-		                '/static/front26.png',
-		                '/static/front27.png',
-		                '/static/front28.png',
-		                '/static/front29.png',
-		                '/static/front30.png'
-		  			 ];
-		  var frames = [];
-	   	
-	   	var onImageLoad = function() {
-	   		console.log("IMAGE!!!");
-	   	};
-	   	
-	   	var onImageLoad2 = function(){
-	   		console.log("IMAGE!!!");
-	   	    context.drawImage(img,5,8);
-	   	};
-	   	
-	  	setup = function() {
-			canvas = document.getElementById('my_canvas');
-			context = canvas.getContext('2d');
-			canvas.width = window.innerWidth;
-			canvas.height = window.innerHeight;
-			
-			for(var i = 0; i < assets.length; i++) {
-				frames.push(new Image());
-				frames[i].src = assets[i];
-				frames[i].onload = onImageLoad;
-			}
-			setInterval(animate,framerate);
-			
-			img = new Image();
-		    img.onload = onImageLoad2;
-		    img.src = "/static/front15.png";
-	   	};
-	   	
-	   	var animate = function(){
-	   		context.clearRect(0,0,canvas.width,canvas.height)
-	   		context.drawImage(frames[frame], 5,8);
-	   		frame = (frame+1) % frames.length;
-	   		if (frame+1 >= frames.length) {
-	   			frame = frames.length-2;
-	   		};
-	   	};
-	   	
-	   	setup();
-	  
-	 </script> 
-  </body>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Beat The Algos</title>
+		
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+		<script src='js/JareUtils.js'></script>
+  		<script src='js/FPSMeter.js'></script>
+ 		<script src='js/GameLoopManager.js'></script>
+		<script type="text/javascript" src="/js/Lesson.js"></script>
+		<!-- <script type="text/javascript" src="/js/desk_zoom.js"></script> -->
+		
+		<style>
+		    #screen { display:block; margin:0 auto; background-color:#F0F; }
+		    .fpsmeter {
+		        padding: 0;
+		        margin: 0;
+		        width: 100%;
+		        text-align: center;
+		    }
+		    .fpsmeter p {
+		        margin-top: 0px;
+		        margin-bottom: 0px;
+		    }
+		</style>
+		</head>
+	
+	<body>
+		<h3>HTML5 Game Programming lesson 1</h3>
+	  	<canvas id='screen' width='800' height='610'></canvas>
+	  	<div id="fpscontainer"></div>
+		<!-- <canvas id="screen"></canvas> -->
+	</body>
 </html>
 
 
